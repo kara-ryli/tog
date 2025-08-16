@@ -108,6 +108,10 @@ h2 {
 .chapter-list {
   column-gap: var(--gutter); 
 }
+.chapter-list>li {
+  break-inside: avoid; -webkit-column-break-inside: avoid;
+  /*safari margin hack*/display: inline-block; width: 100%;
+}
 .chapter-list__EOS .chapter-list__book {
   color: var(--color-empire);
 }
@@ -121,10 +125,20 @@ h2 {
 .chapter-list input:checked + span .chapter-list__book {
   color: unset;
 }
+.chapter-list > li > label > span {
+  display: flex;
+}
+.chapter-list__chapter {
+  text-align: right;
+  flex: auto;
+}
 
 
 /* Medium: 2 columns (>=63ch total) */
 @media (min-width: 62ch) {
+  .book-list {
+    max-width: calc(50% - 0.5 * var(--gutter));
+  }
   .chapter-list {
     columns: 2;
   }
@@ -132,7 +146,7 @@ h2 {
 
 @media (min-width: 93ch) {
   .book-list {
-    max-width: 50%;
+    max-width: calc(33% - 0.5 * var(--gutter));
   }
   .chapter-list {
     columns: 3;
@@ -152,7 +166,8 @@ h2 {
   <li><label><input type="checkbox"> <span>Heir of Fire</span></label></li>
   <li><label><input type="checkbox"> <span>The Assassin's Blade</span></label></li>
   <li><label><input type="checkbox"> <span>Queen of Shadows</span></label></li>
-  <li><label><input type="checkbox" disabled> <span>Empire of Storms &amp; Tower of Dawn</span></label></li>
+  <li><label><input type="checkbox"> <span>Empire of Storms</span></li>
+  <li><label><input type="checkbox"> <span>Tower of Dawn</span></label></li>
   <li><label><input type="checkbox"> <span>Kingdom of Ash</span></label></li>
 </ol>
 <p>
@@ -352,12 +367,6 @@ document.querySelector('.chapter-list').addEventListener('change', (e) => {
       i = i.nextElementSibling;
     }
   }
-  // check the checkbox if all EOS and TOD boxes are checked
-  document.
-    querySelector('input[disabled]').
-    checked = Array.
-      from(e.currentTarget.querySelectorAll('input')).
-      every(({ checked }) => checked);
 
   // sync state
   saveState();
