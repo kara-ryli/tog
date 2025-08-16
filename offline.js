@@ -39,13 +39,16 @@ async function cacheFiles() {
   }
 }
 
-function fetchLive(request) {
-  return fetch(request).then((result) => {
+async function fetchLive(request) {
+  try {
+    const result = await fetch(request);
     console.info('received live result', request.url);
     return result;
-  }, (error) => {
-    console.info('live fetch failed', request.url, error);
-  });
+  }
+  catch (fetchError) {
+    console.info('live fetch failed', request.url, fetchError);
+    throw fetchError;
+  }
 }
 
 function raceWithCached(request, cached) {
