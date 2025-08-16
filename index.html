@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<style>
+@font-face {
+  font-family: "HankenGrotesk";
+  src: url("./fonts/HankenGrotesk/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "HankenGrotesk";
+  src: url("./fonts/HankenGrotesk/HankenGrotesk-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TheNautigal";
+  src: url("./fonts/TheNautigal/TheNautigal-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --gutter: 2ch;
+  --color-highlight: rgb(91, 201, 161);
+  --color-heading: #666;
+  --color-body: #222;
+  --color-background: #EEE;
+  --color-dim: #AAA;
+  --color-lines: #CCC;
+  --color-button: #FFF;
+  --color-empire: #522459;
+  --color-tower: #D1444A;
+  background: var(--color-background);
+  color: var(--color-body);
+  font-family: "HankenGrotesk", sans-serif;
+}
+
+a[href] {
+  color: var(--color-highlight);
+}
+
+body {
+  max-width: 93ch;
+  margin: 0 auto;
+  padding: 1px 2ch;
+}
+h1 {
+  margin: calc((1em * 1.2 - 0.7em) / 2) 0 0;
+  border-bottom: 0.2rem solid var(--color-highlight);
+  font-family: "TheNautigal", serif;
+  font: normal normal 7rem/0.7 "TheNautigal", serif;
+  font-weight: normal;
+  color: var(--color-heading);
+}
+footer {
+  margin: 2em 0;
+}
+h2 {
+  margin-top: 0;
+  font-weight: normal;
+  padding: 0 1em;
+  font-size: 2em;
+}
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+.list>li {
+  position: relative;
+  margin-bottom: 1ch;
+}
+.list label {
+  cursor: pointer;
+}
+.list input {
+  position: absolute;
+  z-index: 1;
+}
+.list input + span {
+  display: block;
+  position: relative;
+  z-index: 2;
+  background-color: var(--color-button);
+  padding: 1.2ch 1.2ch 1ch;
+  border: 1px solid var(--color-lines);
+  border-radius: 1ch;
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+.list input:checked + span {
+  background-color: var(--color-highlight);
+  color: var(--color-button);
+}
+.list input + span:hover {
+  background-color: var(--color-lines);
+  border-color: var(--color-dim);
+}
+.book-list {
+  max-width: 28em;
+}
+.chapter-list {
+  column-gap: var(--gutter); 
+}
+.chapter-list__EOS .chapter-list__book {
+  color: var(--color-empire);
+}
+.chapter-list__TOD .chapter-list__book {
+  color: var(--color-tower);
+}
+.list input:checked + span {
+  background-color: var(--color-highlight);
+  color: var(--color-button);
+}
+.chapter-list input:checked + span .chapter-list__book {
+  color: unset;
+}
+
+
+/* Medium: 2 columns (>=63ch total) */
+@media (min-width: 62ch) {
+  .chapter-list {
+    columns: 2;
+  }
+}
+
+@media (min-width: 93ch) {
+  .book-list {
+    max-width: 50%;
+  }
+  .chapter-list {
+    columns: 3;
+  }
+}
+
+
+/* .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+} */
+</style>
+<h1>Throne of Glass </h1>
+<h2>Romantic Reading List</h2>
+<p>
+  The ideal order to read the Sarah J. Maas series. This order introduces the
+  characters and world for three novels before flashing back to a prequel that
+  maximizes its emotional impact.
+</p>
+<ol class="book-list list">
+  <li><label><input type="checkbox"> <span>Throne of Glass</span></label></li>
+  <li><label><input type="checkbox"> <span>Crown of Midnight</span></label></li>
+  <li><label><input type="checkbox"> <span>Heir of Fire</span></label></li>
+  <li><label><input type="checkbox"> <span>The Assassin's Blade</span></label></li>
+  <li><label><input type="checkbox"> <span>Queen of Shadows</span></label></li>
+  <li><label><input type="checkbox" disabled> <span>Empire of Storms &amp; Tower of Dawn</span></label></li>
+  <li><label><input type="checkbox"> <span>Kingdom of Ash</span></label></li>
+</ol>
+<p>
+  <cite>Empire of Storms</cite> and <cite>Tower of Dawn</cite> take place at
+  the same time and their stories do not overlap. Alternate books in the following
+  order to maintain chronology (and not overdose on Chaol).
+</p>
+<ol class="chapter-list list">
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Nightfall</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 1</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 2</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 3</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 4</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 5</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 1</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 6</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 7</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 8</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 2</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 3</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 9</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 10</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 4</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 5</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 6</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 11</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 7</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 12</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 13</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 8</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 9</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 10</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 14</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 15</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 16</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 11</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 12</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 17</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 18</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 13</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 14</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 15</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 16</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 19</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 17</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 20</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 21</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 22</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 23</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 18</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 19</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 20</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 21</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 24</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 25</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 22</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 23</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 26</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 24</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 27</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 28</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 29</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 25</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 26</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 27</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 28</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 30</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 29</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 30</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 31</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 31</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 32</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 32</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 33</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 34</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 35</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 33</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 34</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 35</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 36</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 37</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 38</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 39</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 40</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 41</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 42</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 43</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 44</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 45</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 46</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 47</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 48</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 49</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 50</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 51</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 36</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 37</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 52</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 38</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 39</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 40</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 53</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 41</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 42</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 54</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 55</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 56</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 43</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 57</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 58</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 59</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 44</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 45</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 46</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 47</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 48</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 60</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 61</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 49</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 50</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 51</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 62</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 63</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 52</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 53</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 64</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 65</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 54</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 55</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 56</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 66</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 67</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 57</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 68</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 69</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 70</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 71</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 72</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 73</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 74</span></span></label></li>
+<li class="chapter-list__EOS"><label><input type="checkbox"> <span><span class="chapter-list__book">Empire of Storms</span> <span class="chapter-list__chapter">Chapter 75</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 58</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 59</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 60</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 61</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 62</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 63</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 64</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 65</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 66</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 67</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Chapter 68</span></span></label></li>
+<li class="chapter-list__TOD"><label><input type="checkbox"> <span><span class="chapter-list__book">Tower of Dawn</span> <span class="chapter-list__chapter">Fireheart</span></span></label></li>
+</ol>
+<footer>
+  Made with ♥ by <a href="https://kararyli.net/">Kara Cannon</a>, based on <a href="https://www.tlbranson.com/throne-of-glass-in-order/">T.L. Branson's original</a>.
+</footer>
+<script>
+
+function toggle(li, value) {
+  li.querySelector('input').checked = value;
+}
+
+function loadState() {
+  const checkboxes = document.body.querySelectorAll('input[type=checkbox]');
+  localStorage.tog?.split(',').forEach((value, index) => {
+    checkboxes.item(index).checked = !!value;
+  });
+}
+
+function saveState() {
+  const checkboxes = document.body.querySelectorAll('input[type=checkbox]');
+  localStorage.tog = Array.from(checkboxes).map((el) => el.checked ? '1' : '');
+}
+
+document.querySelector('.chapter-list').addEventListener('change', (e) => {
+  let i = e.target;
+  do {
+    i = i.parentNode;
+  } while (i?.tagName !== 'LI');
+  const targetClassName = i.className;
+
+  // if we're checking, check all previous chapters in the book
+  if (e.target.checked) {    
+    while (i.previousElementSibling) {
+      if (i.previousElementSibling?.className == targetClassName) {
+        toggle(i.previousElementSibling, true);
+      }
+      i = i.previousElementSibling;
+    }
+  }
+  else {
+    while (i.nextElementSibling) {
+      if (i.nextElementSibling.className == targetClassName) {
+        toggle(i.nextElementSibling, false);
+      }
+      i = i.nextElementSibling;
+    }
+  }
+  // check the checkbox if all EOS and TOD boxes are checked
+  document.
+    querySelector('input[disabled]').
+    checked = Array.
+      from(e.currentTarget.querySelectorAll('input')).
+      every(({ checked }) => checked);
+
+  // sync state
+  saveState();
+});
+
+document.querySelector('.book-list').addEventListener('change', () => saveState());
+
+// save after load in case we change the serialization
+loadState();
+saveState();
+
+</script>
