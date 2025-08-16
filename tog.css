@@ -1,0 +1,161 @@
+@font-face {
+  font-family: "HankenGrotesk";
+  src: url("./fonts/HankenGrotesk/HankenGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "HankenGrotesk";
+  src: url("./fonts/HankenGrotesk/HankenGrotesk-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TheNautigal";
+  src: url("./fonts/TheNautigal/TheNautigal-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --gutter: 2ch;
+  --color-highlight: rgb(91, 201, 161);
+  --color-heading: #666;
+  --color-body: #222;
+  --color-background: #EEE;
+  --color-dim: #AAA;
+  --color-lines: #CCC;
+  --color-button: #FFF;
+  --color-empire: #522459;
+  --color-tower: #D1444A;
+  background: var(--color-background);
+  color: var(--color-body);
+  font-family: "HankenGrotesk", sans-serif;
+  font-size: 5vw;
+}
+
+a[href] {
+  color: var(--color-highlight);
+}
+
+body {
+  max-width: 93ch;
+  margin: 0 auto;
+  padding: 1px 2ch;
+}
+h1 {
+  margin: calc((1em * 1.2 - 0.7em) / 2) 0 0;
+  border-bottom: 0.05em solid var(--color-highlight);
+  font-family: "TheNautigal", serif;
+  font: normal normal 4rem/0.7 "TheNautigal", serif;
+  font-weight: normal;
+  color: var(--color-heading);
+}
+footer {
+  margin: 2em 0;
+}
+h2 {
+  margin-top: 0;
+  font-weight: normal;
+  padding: 0 1em;
+  font-size: 1.5rem;
+}
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+.list>li {
+  position: relative;
+  margin-bottom: 1ch;
+}
+.list label {
+  cursor: pointer;
+}
+.list input {
+  position: absolute;
+  z-index: 1;
+}
+.list input + span {
+  display: block;
+  position: relative;
+  z-index: 2;
+  background-color: var(--color-button);
+  padding: 1.2ch 1.2ch 1ch;
+  border: 1px solid var(--color-lines);
+  border-radius: 1ch;
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+.list input:checked + span {
+  background-color: var(--color-highlight);
+  color: var(--color-button);
+}
+.list input + span:hover {
+  background-color: var(--color-lines);
+  border-color: var(--color-dim);
+}
+.book-list {
+  max-width: 28em;
+}
+.chapter-list {
+  column-gap: var(--gutter); 
+}
+.chapter-list>li {
+  break-inside: avoid; -webkit-column-break-inside: avoid;
+  /*safari margin hack*/display: inline-block; width: 100%;
+}
+.chapter-list__EOS .chapter-list__book {
+  color: var(--color-empire);
+}
+.chapter-list__TOD .chapter-list__book {
+  color: var(--color-tower);
+}
+.list input:checked + span {
+  background-color: var(--color-highlight);
+  color: var(--color-button);
+}
+.chapter-list input:checked + span .chapter-list__book {
+  color: unset;
+}
+.chapter-list > li > label > span {
+  display: flex;
+}
+.chapter-list__chapter {
+  text-align: right;
+  flex: auto;
+}
+
+@media (min-width: 62ch) {
+  :root {
+    font-size: 3vw;
+  }
+  h1 {
+    font-size: 7rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  .book-list {
+    max-width: calc(50% - 0.5 * var(--gutter));
+  }
+  .chapter-list {
+    columns: 2;
+  }
+}
+
+@media (min-width: 93ch) {
+  :root {
+    font-size: unset;
+  }
+  .book-list {
+    max-width: calc(33% - 0.5 * var(--gutter));
+  }
+  .chapter-list {
+    columns: 3;
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset="utf8">
+<title>Throne of Glass Tracker</title>
+<meta name="viewport" content="min-width=640px" />
+<link rel="stylesheet" href="./tog.css" />
+<style>
+.icon {
+  --size: 512px;
+  width: var(--size);
+  height: var(--size);
+  border: thin dashed var(--color-body);
+  text-align: center;
+  margin: 100px auto;
+}
+svg {
+  width: var(--size);
+  height: var(--size);
+  display: inline-block;
+}
+rect {
+  fill: var(--color-background);
+}
+text {
+  font-family: "TheNautigal", serif;
+  font-size: 258px;
+  fill: var(--color-heading);
+}
+line {
+  stroke: var(--color-highlight);
+  stroke-width: 12;
+}
+.shortcut text {
+  font-size: 500px;
+}
+.shortcut line {
+  stroke-width: 40;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-width: 640px;
+  min-height: 640px;
+  width: 100vw;
+  max-width: unset;
+  flex-wrap: wrap;
+}
+</style>
+<div class="apple-touch-icon icon">
+  <svg viewBox="0 0 512 512">
+    <rect x="0" y="0" />
+    <line x1="64" y1="340" x2="448" y2="340"/>
+    <text x="30" y="320">ToG</text>
+  </svg>
+</div>
+<div class="shortcut icon">
+  <svg viewBox="0 0 512 512">
+    <rect x="0" y="0" />
+    <line x1="64" y1="460" x2="448" y2="460"/>
+    <text x="6" y="420">T</text>
+  </svg>
+</div>
