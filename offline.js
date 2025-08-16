@@ -53,7 +53,7 @@ async function fetchLive(request) {
 
 function raceWithCached(request, cached) {
   const timeout = 300;
-  return Promise.race(
+  return Promise.race([
     fetchLive(request),
     new Promise(
       (res) => setTimeout(
@@ -62,7 +62,7 @@ function raceWithCached(request, cached) {
           res(cached);
         }
       ), timeout)
-  );
+  ]);
 }
 
 async function fallBackToCached(request) {
