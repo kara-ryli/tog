@@ -1,3 +1,25 @@
+const scrollToLastPosition = (function () {
+
+  function getScrollPositionProp() {
+    const [orientation = "landscape"] = screen.orientation?.type.split('-');
+    return `${orientation}Scroll`;
+  }
+
+  return () => {
+    // get saved scroll position
+    const targetPosition = localStorage[getScrollPositionProp()] ?? "0";
+    // set scroll position
+    window.scrollTo(window.scrollX, parseInt(targetPosition, 10));
+    // save updated position after scroll events
+    window.addEventListener("scroll", () => {
+      localStorage[getScrollPositionProp()] = window.scrollY;
+    });
+    screen.orientation.addEventListener("change", () => {
+      localStorage[getScrollPositionProp()] = window.scrollY;
+    });
+  };
+}());
+
 function toggle(li, value) {
   li.querySelector('input').checked = value;
 }
@@ -48,7 +70,7 @@ document.querySelector('.book-list').addEventListener('change', () => saveState(
 // save after load in case we change the serialization
 loadState();
 saveState();
-
+scrollToLastPosition();
 navigator?.serviceWorker.register('./offline.js')
   .then((registration) => {
     console.log('Service Worker Registered', registration);
